@@ -1,0 +1,25 @@
+{
+  "name": "input-integer-1",
+  "version": "0.0.0",
+  "description": "ui component",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chrrrisss/input-integer.git"
+  },
+  "keywords": [
+    "slider"
+  ],
+  "author": "Chris",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Chrrrisss/input-integer/issues"
+  },
+  "homepage": "https://github.com/Chrrrisss/input-integer#readme",
+  "dependencies": {
+    "budo": "^11.7.0"
+  }
+}
