@@ -4,6 +4,8 @@
   "description": "ui component",
   "main": "src/index.js",
   "scripts": {
+    "start": "budo demo/demo.js:bundle.js --live --open",
+    "build": "browserify demo/demo.js > bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +23,8 @@
   "homepage": "https://github.com/Chrrrisss/input-integer#readme",
   "dependencies": {
     "budo": "^11.7.0"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0"
   }
 }
