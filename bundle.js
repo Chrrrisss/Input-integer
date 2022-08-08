@@ -1,8 +1,11 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 const input_Integer = require('..')
 
-const input1 = input_Integer()
-const input2 = input_Integer()
+const opt1 = { min: 1, max: 150 }
+const opt2 = { min: 1872, max: 2022 }
+
+const input1 = input_Integer(opt1)
+const input2 = input_Integer(opt2)
 const title = "My demo form"
 const subtitle = "Please fill out the form"
 
@@ -26,15 +29,17 @@ const sheet = new CSSStyleSheet
 const theme = get_theme()
 sheet.replaceSync(theme)
 
-function input_Integer () {
+function input_Integer (opt) {
+    const{ min, max} = opt
     const el = document.createElement('div')
     const shadow = el.attachShadow({ mode: 'closed' })
     const input = document.createElement('input')
     input.type = 'number'
-    input.min = 0
-    input.max = 150
-    input.onkeyup = (e) => handle_onkeyup(e, input)
-
+    input.min = min
+    input.max = max
+    input.onkeyup = (e) => handle_onkeyup(e, input, min, max)
+    input.onmouseleave = (e) => handle_onmouseleave_and_blur(e, input, min)
+    input.onblur = (e) => handle_onmouseleave_and_blur(e, input, min)
     shadow.append(input) 
     shadow.adoptedStyleSheets = [sheet]
     return el
@@ -81,11 +86,20 @@ function get_theme () {
 }
 
 
-function handle_onkeyup (e, input) {
-    console.log(e.target.value)
+function handle_onkeyup (e, input, min, max) {
     const val = Number(e.target.value)
-    if (val > input.max) input.value = 150
-    else if (val < input.min) input.value = 0
-} 
+
+    const val_len = val.toString().length
+    const min_len = min.toString().length
+
+    if (val > max) input.value = ""
+    else if (val_len === min_len && val < min) input.value = ""
+}
+
+function handle_onmouseleave_and_blur (e, input, min) {
+    const val = Number(e.target.value)
+    if (val < min) input.value = ""
+}
+
 
 },{}]},{},[1]);
