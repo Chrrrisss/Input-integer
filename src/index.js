@@ -5,7 +5,7 @@ const theme = get_theme()
 sheet.replaceSync(theme)
 
 function input_Integer (opt) {
-    const{ min, max} = opt
+    const{ min = 0, max = 1000 } = opt
     const el = document.createElement('div')
     const shadow = el.attachShadow({ mode: 'closed' })
     const input = document.createElement('input')
@@ -34,6 +34,7 @@ function get_theme () {
             --shadow-opacity: 0;
             --shadow-opacity-focus: 0.65;
         }
+
         input {
             text-align: left;
             align-items: center;
@@ -53,10 +54,12 @@ function get_theme () {
             --shadow-xy: 4px 4px;
             box-shadow: var(--shadow-xy) var(--shadow-blur) hsla(  var(--shadow-color), var(--shadow-opacity));
         }
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-apperance: none;
-        }
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none; 
+        }    
     `
 }
 

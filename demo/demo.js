@@ -1,4 +1,4 @@
-const input_Integer = require('..')
+const input_Integer = require('input-integer--cc')
 
 const opt1 = { min: 1, max: 150 }
 const opt2 = { min: 1872, max: 2022 }
