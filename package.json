@@ -23,7 +23,7 @@
   "homepage": "https://github.com/Chrrrisss/input-integer#readme",
   "dependencies": {
     "budo": "^11.7.0",
-    "input-integer--cc": "^0.0.1"
+    "input-integer--cc": "^0.0.2"
   },
   "devDependencies": {
     "browserify": "^17.0.0"
